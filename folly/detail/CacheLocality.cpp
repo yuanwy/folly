@@ -211,21 +211,21 @@ Getcpu::Func Getcpu::resolveVdsoFunc() {
 #if !FOLLY_HAVE_LINUX_VDSO
   return nullptr;
 #else
-  void* h = dlopen("linux-vdso.so.1", RTLD_LAZY | RTLD_LOCAL | RTLD_NOLOAD);
-  if (h == nullptr) {
-    return nullptr;
-  }
+//  void* h = dlopen("linux-vdso.so.1", RTLD_LAZY | RTLD_LOCAL | RTLD_NOLOAD);
+//  if (h == nullptr) {
+//    return nullptr;
+//  }
 
-  auto func = Getcpu::Func(dlsym(h, "__vdso_getcpu"));
-  if (func == nullptr) {
-    // technically a null result could either be a failure or a successful
-    // lookup of a symbol with the null value, but the second can't actually
-    // happen for this symbol.  No point holding the handle forever if
-    // we don't need the code
-    dlclose(h);
-  }
+//  auto func = Getcpu::Func(dlsym(h, "__vdso_getcpu"));
+//  if (func == nullptr) {
+//    // technically a null result could either be a failure or a successful
+//    // lookup of a symbol with the null value, but the second can't actually
+//    // happen for this symbol.  No point holding the handle forever if
+//    // we don't need the code
+//    dlclose(h);
+//  }
 
-  return func;
+  return nullptr;
 #endif
 }
 

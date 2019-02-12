@@ -585,28 +585,28 @@ TEST(ThreadLocal, Fork2) {
 TEST(ThreadLocal, SharedLibrary) {
   auto exe = fs::executable_path();
   auto lib = exe.parent_path() / "lib_thread_local_test.so";
-  auto handle = dlopen(lib.string().c_str(), RTLD_LAZY);
-  EXPECT_NE(nullptr, handle);
+//  auto handle = dlopen(lib.string().c_str(), RTLD_LAZY);
+//  EXPECT_NE(nullptr, handle);
 
   typedef void (*useA_t)();
   dlerror();
-  useA_t useA = (useA_t) dlsym(handle, "useA");
+//  useA_t useA = (useA_t) dlsym(handle, "useA");
 
   const char *dlsym_error = dlerror();
   EXPECT_EQ(nullptr, dlsym_error);
 
-  useA();
+//  useA();
 
   folly::Baton<> b11, b12, b21, b22;
 
   std::thread t1([&]() {
-      useA();
+//      useA();
       b11.post();
       b12.wait();
     });
 
   std::thread t2([&]() {
-      useA();
+//      useA();
       b21.post();
       b22.wait();
     });
@@ -614,7 +614,7 @@ TEST(ThreadLocal, SharedLibrary) {
   b11.wait();
   b21.wait();
 
-  dlclose(handle);
+//  dlclose(handle);
 
   b12.post();
   b22.post();

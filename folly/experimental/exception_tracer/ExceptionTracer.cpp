@@ -115,9 +115,9 @@ std::vector<ExceptionInfo> getCurrentExceptions() {
 
       if (!getExceptionStackTraceStackFn) {
         // Nope, see if it's in a shared library
-        getExceptionStackTraceStackFn =
-          (GetExceptionStackTraceStackType)dlsym(
-              RTLD_NEXT, "getExceptionStackTraceStack");
+//        getExceptionStackTraceStackFn =
+//          (GetExceptionStackTraceStackType)dlsym(
+//              RTLD_NEXT, "getExceptionStackTraceStack");
       }
     }
   };

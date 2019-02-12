@@ -54,19 +54,19 @@ namespace {
 
 struct VdsoInitializer {
   VdsoInitializer() {
-    m_handle = dlopen("linux-vdso.so.1", RTLD_LAZY | RTLD_LOCAL | RTLD_NOLOAD);
-    if (!m_handle) {
-      return;
-    }
+//    m_handle = dlopen("linux-vdso.so.1", RTLD_LAZY | RTLD_LOCAL | RTLD_NOLOAD);
+//    if (!m_handle) {
+//      return;
+//    }
 
-    void* p = dlsym(m_handle, "__vdso_clock_gettime");
-    if (p) {
-      folly::chrono::clock_gettime = (int (*)(clockid_t, timespec*))p;
-    }
-    p = dlsym(m_handle, "__vdso_clock_gettime_ns");
-    if (p) {
-      folly::chrono::clock_gettime_ns = (int64_t(*)(clockid_t))p;
-    }
+//    void* p = dlsym(m_handle, "__vdso_clock_gettime");
+//    if (p) {
+//      folly::chrono::clock_gettime = (int (*)(clockid_t, timespec*))p;
+//    }
+//    p = dlsym(m_handle, "__vdso_clock_gettime_ns");
+//    if (p) {
+//      folly::chrono::clock_gettime_ns = (int64_t(*)(clockid_t))p;
+//    }
   }
 
   ~VdsoInitializer() {

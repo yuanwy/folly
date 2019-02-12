@@ -293,12 +293,8 @@ AC_CACHE_CHECK(
     [AC_LANG_PROGRAM[
       #include <dlfcn.h>
       int main() {
-        void *h = dlopen("linux-vdso.so.1", RTLD_LAZY | RTLD_LOCAL | RTLD_NOLOAD);
-        if (h == nullptr) {
-          return -1;
-        }
-        dlclose(h);
-        return 0;
+      return -1;
+
       }
     ]],
     [folly_cv_lib_liblinux_vdso=yes],

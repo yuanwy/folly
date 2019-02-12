@@ -204,8 +204,9 @@ void sigsegvSignalHandler(int signum, siginfo_t* info, void*) {
 }
 
 bool isInJVM() {
-  auto getCreated = dlsym(RTLD_DEFAULT, "JNI_GetCreatedJavaVMs");
-  return getCreated;
+return false;
+//  auto getCreated = dlsym(RTLD_DEFAULT, "JNI_GetCreatedJavaVMs");
+//  return getCreated;
 }
 
 void installSignalHandler() {
